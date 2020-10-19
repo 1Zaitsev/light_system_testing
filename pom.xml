@@ -12,7 +12,7 @@
     <artifactId>light_system_testing</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>light_system_testing</name>
-    <description>Recruting test solution</description>
+    <description>Recruiting test solution</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -60,6 +60,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>6.0.1</version>
+                <configuration>
+                    <configFiles>src/main/resources/flyway.conf</configFiles>
+                </configuration>
             </plugin>
         </plugins>
     </build>
