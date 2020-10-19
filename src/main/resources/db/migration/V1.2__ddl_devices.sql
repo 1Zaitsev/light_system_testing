@@ -6,7 +6,7 @@ CREATE TABLE light_system.devices
     project_id    INT          NOT NULL,
     serial_number VARCHAR(256) NULL,
     PRIMARY KEY (id),
-    INDEX fk_devices_projects_idx (project_id ASC) VISIBLE,
+    INDEX         fk_devices_projects_idx(project_id ASC) VISIBLE,
     CONSTRAINT fk_devices_projects
         FOREIGN KEY (project_id)
             REFERENCES light_system.projects (id)
