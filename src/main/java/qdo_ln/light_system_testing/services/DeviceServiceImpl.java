@@ -19,6 +19,11 @@ public class DeviceServiceImpl implements DeviceService {
     }
 
     @Override
+    public Device save(Device device) {
+        return deviceRepository.save(device);
+    }
+
+    @Override
     public List<Device> findAllByProjectId(int projectId) {
         return deviceRepository.findAllByProjectId(projectId);
     }

@@ -1,8 +1,7 @@
 package qdo_ln.light_system_testing.entities;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
+import qdo_ln.light_system_testing.utils.EventType;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -10,7 +9,15 @@ import java.util.Date;
 @Entity
 @Table(name = "events")
 @Data
+@NoArgsConstructor
 public class Event {
+
+    public Event(Device device, Date date, EventType type, int isRead) {
+        this.device = device;
+        this.date = date;
+        this.type = type;
+        this.isRead=isRead;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,12 +36,3 @@ public class Event {
     int isRead;
 }
 
-@Getter
-@RequiredArgsConstructor
-enum EventType{
-    EVENT("event"),
-    WARNING("warning"),
-    ERROR("error");
-
-    private final String title;
-}

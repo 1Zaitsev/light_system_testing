@@ -1,13 +1,16 @@
 package qdo_ln.light_system_testing.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import qdo_ln.light_system_testing.entities.Device;
+import qdo_ln.light_system_testing.entities.Project;
 import qdo_ln.light_system_testing.services.intefeces.DeviceService;
+import qdo_ln.light_system_testing.services.intefeces.ProjectService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1")
@@ -18,8 +21,17 @@ public class MainController {
 
     private final DeviceService deviceService;
 
-    @PostMapping(value = "/devices/{projectId}", produces = DATA_TYPE)
-    public String showDevicesByProjectId(@PathVariable int projectId){
-        return deviceService.findAllByProjectId(projectId).toString();
+    private final ProjectService projectService;
+
+    @GetMapping(value = "/devices/{projectId}", produces = DATA_TYPE)
+    public List<Device> showDevicesByProjectId(@PathVariable int projectId){
+        return deviceService.findAllByProjectId(projectId);
     }
+
+    @GetMapping(value = "/projects", produces = DATA_TYPE)
+    public List<Project> showAllProjects(){
+        return projectService.findAll();
+    }
+
+
 }

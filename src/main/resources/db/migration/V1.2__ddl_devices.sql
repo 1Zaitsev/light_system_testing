@@ -4,7 +4,7 @@ CREATE TABLE light_system.devices
 (
     id            INT          NOT NULL AUTO_INCREMENT,
     project_id    INT          NOT NULL,
-    serial_number VARCHAR(256) NULL,
+    serial_number VARCHAR(256) UNIQUE NULL,
     PRIMARY KEY (id),
     INDEX         fk_devices_projects_idx(project_id ASC) VISIBLE,
     CONSTRAINT fk_devices_projects

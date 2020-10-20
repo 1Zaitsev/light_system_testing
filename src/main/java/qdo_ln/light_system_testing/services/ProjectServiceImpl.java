@@ -19,6 +19,11 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
+    public Project save(Project project) {
+        return projectRepository.save(project);
+    }
+
+    @Override
     public List<Project> findAll() {
         return projectRepository.findAll();
     }

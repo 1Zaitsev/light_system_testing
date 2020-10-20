@@ -1,6 +1,8 @@
 package qdo_ln.light_system_testing.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
@@ -8,7 +10,13 @@ import java.util.List;
 @Entity
 @Table(name = "devices")
 @Data
+@NoArgsConstructor
 public class Device {
+
+    public Device(Project project, String serialNumber){
+        this.project = project;
+        this.serialNumber = serialNumber;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
