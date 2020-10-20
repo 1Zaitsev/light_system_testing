@@ -1,6 +1,8 @@
 package qdo_ln.light_system_testing.entities;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -21,8 +23,18 @@ public class Event {
     Date date;
 
     @Enumerated
-    int type;
+    EventType type;
 
     @Column(name = "is_read")
     int isRead;
+}
+
+@Getter
+@RequiredArgsConstructor
+enum EventType{
+    EVENT("event"),
+    WARNING("warning"),
+    ERROR("error");
+
+    private final String title;
 }
