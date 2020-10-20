@@ -15,7 +15,7 @@ public interface DeviceRepository extends JpaRepository<Device, Integer> {
      * Поиск всех девайсов по идентификатору проекта
      */
     @Modifying
-    @Query(value = "SELECT id, serial_number FROM devices WHERE project_id = :projectId", nativeQuery = true)
+    @Query(value = "SELECT id, serial_number, project_id FROM devices WHERE project_id = :projectId", nativeQuery = true)
     @Transactional
     List<Device> findAllByProjectId(@Param("projectId") int projectId);
 }
