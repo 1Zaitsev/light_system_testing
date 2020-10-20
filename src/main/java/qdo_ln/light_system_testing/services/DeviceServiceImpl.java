@@ -1,4 +1,23 @@
 package qdo_ln.light_system_testing.services;
 
-public class DeviceProjectImpl {
+import org.springframework.beans.factory.annotation.Autowired;
+import qdo_ln.light_system_testing.entities.Device;
+import qdo_ln.light_system_testing.repositories.DeviceRepository;
+import qdo_ln.light_system_testing.services.intefeces.DeviceService;
+
+import java.util.List;
+
+public class DeviceServiceImpl implements DeviceService {
+
+    private DeviceRepository deviceRepository;
+
+    @Autowired
+    public void setDeviceRepository(DeviceRepository deviceRepository) {
+        this.deviceRepository = deviceRepository;
+    }
+
+    @Override
+    public List<Device> findAllByProjectId(int projectId) {
+        return deviceRepository.findAllByProjectId(projectId);
+    }
 }
